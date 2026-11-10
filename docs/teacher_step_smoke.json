@@ -1,6 +1,6 @@
 {
   "state": "complete",
-  "scope": "2 real UnAV train videos + 1 validation video; reduced hidden_dim=8, one layer; not the full teacher",
+  "scope": "2 real UnAV train videos + 1 validation video; reduced hidden_dim=8, one layer",
   "train_loss": {
     "loss_video": 0.0,
     "loss_av": 0.4263275946599539,

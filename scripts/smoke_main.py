@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Real two-round CPU training on two videos per split, NOT a benchmark run.
+"""Two-round CPU training check on two videos per split.
 
 Uses the actual parser, both optimizers, validation selection, checkpoint I/O,
 U-HNM and IPR. Only dataset length / epochs / batch size / workers are reduced.
@@ -26,7 +26,7 @@ def main():
     flags=['train-llp','--run-id',args.run_id,'--device','cpu','--epochs','1','--batch-size','2','--workers','0','--threads','1']
     if args.label_root:flags+=['--label-root',str(args.label_root)]
     plan=reproduce.build_plan(reproduce.parser().parse_args(flags));out=Path(plan['output_directories'][0]);out.mkdir(parents=True,exist_ok=False)
-    record={'scope':'2 real videos per split; 1 epoch per phase; two rounds; not full training','state':'running','plan':plan}
+    record={'scope':'2 real videos per split; 1 epoch per phase; two rounds','state':'running','plan':plan}
     state=out/'smoke.json';state.write_text(json.dumps(record,indent=2)+'\n');started=time.monotonic()
     previous=Path.cwd();os.chdir(ROOT)
     try:

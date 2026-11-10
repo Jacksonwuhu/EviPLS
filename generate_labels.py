@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
-"""Regenerate LLP teacher labels into a NEW directory using frozen thresholds.
+"""Generate LLP pseudo-labels in a new output directory.
 
-Uses the released five-layer checkpoint and existing (not event_feats_v2) text
-embeddings. Does not recalibrate thresholds, normalize projected features,
-load dense ground truth, or require the unused VGGish/Res152 teacher inputs.
-New teacher checkpoints require their own validation-calibrated thresholds.
-AVE regeneration is deliberately not supported (teacher audio inputs missing).
+Uses the five-layer teacher, event_feats text embeddings, weak video labels,
+and matching validation-calibrated thresholds. Thresholds apply directly to
+projected-feature logits. Inputs are CLAP audio and CLIP visual features.
+New checkpoints use thresholds produced by calibrate_teacher.py.
 """
 
 from __future__ import annotations
@@ -224,7 +223,7 @@ def generate(args: argparse.Namespace, root: Path = ROOT) -> dict:
                   fixed_inputs={key: {"path": str(path), "sha256": sha256(path)} for key, path in paths.items()},
                   protocol="five-layer UnAV teacher; unchanged event_feats; fixed logit thresholds; weak masking; no feature normalization",
                   dense_ground_truth_used=False, threshold_recalibrated=False,
-                  comparison_scope="only generated samples, not a full-dataset equivalence claim")
+                  comparison_scope="generated samples listed in this manifest")
     manifest = output / "manifest.json"
     manifest.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     try:

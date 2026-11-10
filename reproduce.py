@@ -54,7 +54,7 @@ def parser() -> argparse.ArgumentParser:
         if action == 'generate-labels':
             command.add_argument('--threshold-dir', type=Path)
             command.add_argument('--split', choices=('train', 'val', 'test', 'all'), default='all')
-            command.add_argument('--limit', type=int, help='smoke check only; limited output is not full training input')
+            command.add_argument('--limit', type=int, help='generate the first N videos for an inference check; full training requires all videos')
     return result
 
 

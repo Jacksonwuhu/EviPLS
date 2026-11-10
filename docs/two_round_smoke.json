@@ -1,5 +1,5 @@
 {
-  "scope": "2 real videos per split; 1 epoch per phase; two rounds; not full training",
+  "scope": "2 real videos per split; 1 epoch per phase; two rounds",
   "state": "complete",
   "plan": {
     "action": "train-llp",

@@ -36,7 +36,7 @@
   },
   {
     "path": "generate_labels.py",
-    "sha256": "9a1024efa651d196f689bdefcf2a8fbf3a0c3a94c8f709bc00308ec9e9ce6b6a",
+    "sha256": "22680c54c28f4d31a1acb6aedaf20d0246238da791eeff1ff88fd6f63fe03efe",
     "origin": "deliverables/EviPLS_core_20261012/generate_labels.py",
     "source_sha256": "33e2146a6b96fef07fd7c251e4b0911de7e4ea50e4e8e8347eafb249d8335c99",
     "changed": true
@@ -203,7 +203,7 @@
   },
   {
     "path": "reproduce.py",
-    "sha256": "f11154f4c08f4e6b73eaa491af04a833607fdf7934a241b4e15f0cf600d58764",
+    "sha256": "5e18624da0c9da157d52ab668ba2044bdce3d7191c243acebd727dadc9483847",
     "origin": "deliverables/EviPLS_core_20261012/reproduce.py",
     "source_sha256": "31f60e4db654ef4dd5d898a72f3c3709700f65357db3fb1f6e8a10b8dc135487",
     "changed": true
@@ -222,13 +222,13 @@
   },
   {
     "path": "scripts/smoke_main.py",
-    "sha256": "b847d84d293ba2a300112b60df798df211dc0ed3c3c96fe2ddb4de1dd07eb23d",
+    "sha256": "38a411d9bf2ff377c52dd3de2a89802cbc7879ce2fe83f7141c04a8d68014297",
     "origin": "new reproducibility adapter",
     "changed": true
   },
   {
     "path": "scripts/smoke_teacher.py",
-    "sha256": "4a933082da5f92804fc878c3393d63df6709c77eea888b8974dd3fbe13f31bf9",
+    "sha256": "b3c16644dbfc7a33c157cf3568a2daaffed4e6320aa07ac458e85f8b15fb5238",
     "origin": "new reproducibility adapter",
     "changed": true
   },

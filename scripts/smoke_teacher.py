@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One real UnAV optimizer step with a reduced backbone; not a formal teacher run."""
+"""UnAV training interface check: one optimizer step with a reduced backbone."""
 import argparse,copy,json,os,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
@@ -36,6 +36,6 @@ def main():
         scheduler.step()
         scores,val_loss=teacher.evaluate_validation(config,model,validation,torch.device('cpu'))
     if not np.isfinite(loss['loss_all']) or torch.equal(original,model.proj_a.layers[0].weight):raise ValueError('No finite optimizer update')
-    report={'state':'complete','scope':'2 real UnAV train videos + 1 validation video; reduced hidden_dim=8, one layer; not the full teacher', 'train_loss':loss,'validation_loss':val_loss,'validation_metrics':scores,'video_ids':list(selected),'parameter_update_verified':True}
+    report={'state':'complete','scope':'2 real UnAV train videos + 1 validation video; reduced hidden_dim=8, one layer', 'train_loss':loss,'validation_loss':val_loss,'validation_metrics':scores,'video_ids':list(selected),'parameter_update_verified':True}
     (output/'report.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':main()
