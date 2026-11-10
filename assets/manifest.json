@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "scope": "LLP teacher inputs, student inputs, frozen pseudo-labels and checkpoints; no raw videos",
+  "archives": [
+    {
+      "file": "student_audio_01.tar.gz",
+      "bytes": 880392218,
+      "sha256": "e36d77ce9b75713fb17dbb983e6dd23481a7c1ddecb5a5afa98990bad49ff8b3",
+      "files": 4796
+    },
+    {
+      "file": "student_audio_02.tar.gz",
+      "bytes": 880392841,
+      "sha256": "e550c8606faa3675328a5749f5c13c8cf21c41ea80b4c2082ea226d8781f8c50",
+      "files": 4796
+    },
+    {
+      "file": "student_audio_03.tar.gz",
+      "bytes": 414316327,
+      "sha256": "a6a98c4cfd1f9524012e58c90013ee595075c128209342124ef98e329a739ab4",
+      "files": 2257
+    },
+    {
+      "file": "student_visual_01.tar.gz",
+      "bytes": 596589508,
+      "sha256": "654ccaf1ddf4b5fff94b2a1c37cdf0592639903476c55599e06c047f1ebc05d5",
+      "files": 27400
+    },
+    {
+      "file": "teacher_llp_01.tar.gz",
+      "bytes": 565075658,
+      "sha256": "c21e582296bb9298a57848e540d68b8b7ae9c3983442ba7d8a24606d84ce395e",
+      "files": 23750
+    },
+    {
+      "file": "labels_weights_01.tar.gz",
+      "bytes": 524582524,
+      "sha256": "4102ab1d8d36c252c6b9bbb7e5dfc67d2a86758c6072c74e826b06de2ea69c4d",
+      "files": 23706
+    }
+  ]
+}

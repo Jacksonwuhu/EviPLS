@@ -1,0 +1,24 @@
+[
+  {
+    "video": "7nSYwyaP4QE",
+    "modality": "audio",
+    "time": 0,
+    "category": "Singing",
+    "generated": 0.0,
+    "frozen": 1.0,
+    "logit": -14.998061180114746,
+    "threshold": -14.082531929016113,
+    "margin": -0.9155292510986328
+  },
+  {
+    "video": "7nSYwyaP4QE",
+    "modality": "visual",
+    "time": 2,
+    "category": "Banjo",
+    "generated": 0.0,
+    "frozen": 1.0,
+    "logit": 0.9323344230651855,
+    "threshold": 1.5008018016815186,
+    "margin": -0.568467378616333
+  }
+]

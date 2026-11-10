@@ -1,0 +1,33 @@
+{
+  "state": "complete",
+  "test_videos": 1200,
+  "checkpoint": "weights/llp/seed6_round2.pt",
+  "checkpoint_sha256": "d601b23032e09439cae4095a74cddb0c05c106e212efc2e5c44655c2bf550080",
+  "metrics": {
+    "eve_audio": 63.183068783068784,
+    "eve_av": 60.79444444444444,
+    "eve_event": 61.7606277981278,
+    "eve_type": 64.47213403880069,
+    "eve_video": 69.43888888888888,
+    "seg_audio": 70.49094044703243,
+    "seg_av": 67.15432351016716,
+    "seg_event": 69.27467043808493,
+    "seg_type": 70.27820689654948,
+    "seg_video": 73.18935673244884
+  },
+  "reference_source": "artifacts/final_multiseed_test_20260818/evipl_s6.json",
+  "metric_differences": {
+    "eve_audio": 0.0,
+    "eve_av": 0.0,
+    "eve_event": 0.0,
+    "eve_type": 0.0,
+    "eve_video": 0.0,
+    "seg_audio": 0.0,
+    "seg_av": 0.0,
+    "seg_event": 0.0,
+    "seg_type": 0.0,
+    "seg_video": 0.0
+  },
+  "all_ten_metrics_exactly_equal": true,
+  "device": "cpu"
+}

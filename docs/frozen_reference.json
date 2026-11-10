@@ -1,0 +1,59 @@
+[
+  {
+    "seed": 6,
+    "checkpoint": "weights/llp/seed6_round2.pt",
+    "checkpoint_sha256": "d601b23032e09439cae4095a74cddb0c05c106e212efc2e5c44655c2bf550080",
+    "metrics": {
+      "eve_audio": 63.183068783068784,
+      "eve_av": 60.79444444444444,
+      "eve_event": 61.7606277981278,
+      "eve_type": 64.47213403880069,
+      "eve_video": 69.43888888888888,
+      "seg_audio": 70.49094044703243,
+      "seg_av": 67.15432351016716,
+      "seg_event": 69.27467043808493,
+      "seg_type": 70.27820689654948,
+      "seg_video": 73.18935673244884
+    },
+    "source_record": "artifacts/final_multiseed_test_20260818/evipl_s6.json",
+    "evidence_type": "historical frozen evaluation, not this run"
+  },
+  {
+    "seed": 17,
+    "checkpoint": "weights/llp/seed17_round2.pt",
+    "checkpoint_sha256": "03c15855282c9d0d9d354b9b843355c7a5fb793f8db9551e2d9c0dae7cb3c9ae",
+    "metrics": {
+      "eve_audio": 63.05158730158729,
+      "eve_av": 59.39097222222222,
+      "eve_event": 61.88972772597773,
+      "eve_type": 63.885637125220455,
+      "eve_video": 69.21435185185186,
+      "seg_audio": 70.46821339067395,
+      "seg_av": 66.21380552282254,
+      "seg_event": 69.49494956285916,
+      "seg_type": 69.90445657718574,
+      "seg_video": 73.0313508180607
+    },
+    "source_record": "artifacts/final_multiseed_test_20260818/evipl_s17.json",
+    "evidence_type": "historical frozen evaluation, not this run"
+  },
+  {
+    "seed": 42,
+    "checkpoint": "weights/llp/seed42_round2.pt",
+    "checkpoint_sha256": "17ada9d275b58a6264df63e94ba6b150fd06a8568a8a115db07ca8e90a6241df",
+    "metrics": {
+      "eve_audio": 63.73587962962962,
+      "eve_av": 59.320568783068786,
+      "eve_event": 62.303538359788355,
+      "eve_type": 63.92714947089947,
+      "eve_video": 68.72500000000001,
+      "seg_audio": 70.96536612238069,
+      "seg_av": 66.37962383656075,
+      "seg_event": 69.62423440775633,
+      "seg_type": 69.96462294950435,
+      "seg_video": 72.54887888957161
+    },
+    "source_record": "artifacts/final_multiseed_test_20260818/evipl_s42.json",
+    "evidence_type": "historical frozen evaluation, not this run"
+  }
+]

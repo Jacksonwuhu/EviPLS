@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+models/
+logger/
+artifacts/
+data/*/
+pretrain/data/
+pretrain/checkpoints/
+weights/
+.cache/
+*.part
+*.ckpt
+*.best
+*.pt
+# Stage only completed, verified asset archives explicitly.
+assets/*.tar.gz
+assets/*.zip

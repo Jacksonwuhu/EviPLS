@@ -1,0 +1,7 @@
+{
+  "state": "complete",
+  "scope": "fresh extraction of all six LLP data/weight archives and every file SHA256",
+  "files_verified": 86705,
+  "elapsed_seconds": 635.3085512444377,
+  "temporary_copy_removed_after_verification": true
+}

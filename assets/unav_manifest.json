@@ -1,0 +1,17 @@
+{
+  "revision": "71dcb419fb8ff88ce289b396470abdf8b597f27e",
+  "archives": [
+    {
+      "file": "UnAV_CLAP.zip",
+      "sha256": "09c162c9efb0944ef25d2c84151533dd60bff3314eb4067b90f6da6a36d06484",
+      "bytes": 875118163,
+      "destination": "data/UnAV/feats_CLAP"
+    },
+    {
+      "file": "UnAV_CLIP.zip",
+      "sha256": "3987fa662687776c8cd68af78023038397b5cdfd1461972c72d800f553c1fd19",
+      "bytes": 1304627715,
+      "destination": "data/UnAV/feats_CLIP"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "scope": "all LLP input values; all UnAV train/validation values",
+  "llp": {
+    "videos": 11849,
+    "split_sizes": {
+      "train": 10000,
+      "val": 649,
+      "test": 1200
+    },
+    "checked_arrays": 59245
+  },
+  "teacher_llp": {
+    "feats_CLAP": {
+      "files": 11849,
+      "shape": [
+        10,
+        512
+      ]
+    },
+    "feats_CLIP": {
+      "files": 11849,
+      "shape": [
+        10,
+        768
+      ]
+    },
+    "checkpoint": {
+      "sha256": "da4990641f8e7544830e97147973f36d895410cbdd9ef412147945910a2d5aa2"
+    },
+    "audio_events": {
+      "sha256": "0fad54f51eb06dcaed69898458e5b84f2beab5b3d57b76719944d3843a39d002"
+    },
+    "visual_events": {
+      "sha256": "ecd8b971b2d0336d0985ce747dbf106e8009a88f625faa8fa45a22896ef50cbd"
+    },
+    "audio_thresholds": {
+      "path": "pretrain/thresholds/llp/a_classwise_threhsolds.npy",
+      "sha256": "4223dac1c0d855bc2f6b7216d55fcbb8075cb5f4f92c3a52966b824c9fb15829",
+      "verification": "full 649-video calibration and two-video regeneration"
+    },
+    "visual_thresholds": {
+      "path": "pretrain/thresholds/llp/v_classwise_threhsolds.npy",
+      "sha256": "eabc75c3252004732febe33bdee9fa259df196fe8b9d946bda6d64e87a1e2afc",
+      "verification": "full 649-video calibration and two-video regeneration"
+    }
+  },
+  "unav": {
+    "status": "passed",
+    "data_root": "<project>/data/UnAV",
+    "split_counts": {
+      "train": 6489,
+      "validation": 2134
+    },
+    "max_quantized_duration": {
+      "train": 60,
+      "validation": 60
+    },
+    "feature_files_checked": 17246,
+    "feature_content_finiteness": "all train/validation values scanned; finite",
+    "shapes": {
+      "clap_events": [
+        100,
+        512
+      ],
+      "clip_events": [
+        100,
+        768
+      ],
+      "clap_segments": [
+        "L>=1",
+        512
+      ],
+      "clip_segments": [
+        "L>=1",
+        768
+      ]
+    },
+    "category_order": [
+      "man speaking",
+      "woman speaking",
+      "kid speaking",
+      "male singing",
+      "people laughing",
+      "car passing by",
+      "baby laughter",
+      "wind noise",
+      "people clapping",
+      "people shouting",
+      "people crowd",
+      "female singing",
+      "dog barking",
+      "playing acoustic guitar",
+      "people eating",
+      "people cheering",
+      "basketball bounce",
+      "engine knocking",
+      "playing tennis",
+      "baby babbling",
+      "striking bowling",
+      "playing badminton",
+      "cat meowing",
+      "people slapping",
+      "playing piano",
+      "baby crying",
+      "people burping",
+      "orchestra",
+      "playing drum kit",
+      "playing violin",
+      "machine gun shooting",
+      "child singing",
+      "people nose blowing",
+      "playing electronic organ",
+      "people sneezing",
+      "dog howling",
+      "skateboarding",
+      "playing base guitar",
+      "auto racing",
+      "sea waves",
+      "playing table tennis",
+      "people coughing",
+      "people whispering",
+      "playing ukulele",
+      "sheep bleating",
+      "playing tabla",
+      "fire truck siren",
+      "playing volleyball",
+      "beat boxing",
+      "playing trumpet",
+      "thunder",
+      "playing cello",
+      "playing harp",
+      "hammering nails",
+      "people running",
+      "sailing",
+      "telephone bell ringing",
+      "frog croaking",
+      "driving motorcycle",
+      "playing cornet",
+      "playing clarinet",
+      "train wheels squealing",
+      "playing flute",
+      "playing trombone",
+      "playing erhu",
+      "bull bellowing",
+      "raining",
+      "skidding",
+      "chainsawing trees",
+      "police car siren",
+      "playing saxophone",
+      "fireworks banging",
+      "driving buses",
+      "tap dancing",
+      "airplane flyby",
+      "people whistling",
+      "train horning",
+      "vacuum cleaner cleaning floors",
+      "playing accordion",
+      "bird chirping",
+      "vehicle honking",
+      "church bell ringing",
+      "playing snare drum",
+      "playing synthesizer",
+      "typing on computer keyboard",
+      "singing choir",
+      "lions roaring",
+      "people slurping",
+      "helicopter",
+      "horse clip-clop",
+      "water burbling",
+      "lawn mowing",
+      "playing banjo",
+      "playing zither",
+      "playing harmonica",
+      "people battle cry",
+      "people sobbing",
+      "ambulance siren",
+      "rope skipping",
+      "hair dryer drying"
+    ],
+    "fixed_inputs": {
+      "annotations": {
+        "path": "<project>/data/UnAV/unav100_annotations.json",
+        "sha256": "2fdfc587ad36fc405496b5520d967b5df54b2d82027d16d69e968b5cf04d3dba"
+      },
+      "clap_events": {
+        "path": "<project>/data/UnAV/feats_CLAP/event_feats/all_event_feats.npy",
+        "sha256": "fe0c61f4988c263b6278ed14198bb67142de7bdd4e5fb21429aa8e4e37ad0d0b"
+      },
+      "clip_events": {
+        "path": "<project>/data/UnAV/feats_CLIP/event_feats/all_event_feats.npy",
+        "sha256": "541f37b946ecaf3cc4ad1516b136163e41dba686beafddfca1a5332d17e1859b"
+      }
+    },
+    "test_features_read": false,
+    "unused_feature_reads_omitted": [
+      "VGGish",
+      "I3D RGB",
+      "I3D flow"
+    ]
+  },
+  "status": "passed",
+  "historical_thresholds_at_initial_audit": {
+    "audio_thresholds": {
+      "sha256": "0ca730475aff223817de10422c41bcd6ca92e5cb14074e04e3fb9ef4d0c6134c"
+    },
+    "visual_thresholds": {
+      "sha256": "9d974f88fee9789c162ac7a9299078609ada5b8c73d3fcc57b5c9926b23b9418"
+    }
+  }
+}

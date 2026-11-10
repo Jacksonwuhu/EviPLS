@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "state": "complete",
+  "split": "val",
+  "videos": 649,
+  "event_embeddings_sha256": {
+    "audio_events": "0fad54f51eb06dcaed69898458e5b84f2beab5b3d57b76719944d3843a39d002",
+    "visual_events": "ecd8b971b2d0336d0985ce747dbf106e8009a88f625faa8fa45a22896ef50cbd"
+  },
+  "checkpoint_sha256": "da4990641f8e7544830e97147973f36d895410cbdd9ef412147945910a2d5aa2",
+  "checkpoint": "pretrain/checkpoints/teacher_unav100_best.pt",
+  "validation_split_sha256": "1811813b54c5f43c3be0a97bd0971cfb8a93818ca7b3ab96cdc7f4ac37ef37a6",
+  "annotation_sha256": {
+    "audio": "d5435664668bec6e7eafb39059d2f424ed2682f6b55395262fc3cb691b7d0778",
+    "visual": "e2274af694f3f27e38b840e0cd91a9d8d9ac85280f193e90828d26b22db69abe"
+  },
+  "routine": "original get_best_f_threshold; weak-label masking; legacy tie handling",
+  "test_used_for_selection": false,
+  "annotation_anomalies": [
+    {
+      "filename": "8DF2PxdT5tE_390_400",
+      "onset": "9",
+      "offset": "0",
+      "event_labels": "Cheering",
+      "source": "AVVP_eval_audio.csv",
+      "handling": "original empty NumPy slice; annotation unchanged"
+    }
+  ],
+  "threshold_sha256": {
+    "audio_thresholds": "4223dac1c0d855bc2f6b7216d55fcbb8075cb5f4f92c3a52966b824c9fb15829",
+    "visual_thresholds": "eabc75c3252004732febe33bdee9fa259df196fe8b9d946bda6d64e87a1e2afc"
+  },
+  "elapsed_seconds": 138.10137091949582
+}

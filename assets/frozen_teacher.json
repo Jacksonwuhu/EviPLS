@@ -1,0 +1,11 @@
+{
+  "schema_version": 2,
+  "role": "frozen teacher with verified validation-calibrated LLP thresholds",
+  "sha256": {
+    "checkpoint": "da4990641f8e7544830e97147973f36d895410cbdd9ef412147945910a2d5aa2",
+    "audio_events": "0fad54f51eb06dcaed69898458e5b84f2beab5b3d57b76719944d3843a39d002",
+    "visual_events": "ecd8b971b2d0336d0985ce747dbf106e8009a88f625faa8fa45a22896ef50cbd",
+    "audio_thresholds": "4223dac1c0d855bc2f6b7216d55fcbb8075cb5f4f92c3a52966b824c9fb15829",
+    "visual_thresholds": "eabc75c3252004732febe33bdee9fa259df196fe8b9d946bda6d64e87a1e2afc"
+  }
+}

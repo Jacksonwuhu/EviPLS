@@ -1,0 +1,117 @@
+{
+  "scope": "first two real videos from each LLP split; CPU inference",
+  "videos": 6,
+  "total_label_positions": 3000,
+  "differing_positions": 19,
+  "samples": [
+    {
+      "split": "train",
+      "video": "BjCEufrlXm4",
+      "comparison": {
+        "audio": {
+          "available": true,
+          "exact_equal": true,
+          "shape_equal": true,
+          "differing_positions": 0
+        },
+        "visual": {
+          "available": true,
+          "exact_equal": true,
+          "shape_equal": true,
+          "differing_positions": 0
+        }
+      }
+    },
+    {
+      "split": "train",
+      "video": "7nSYwyaP4QE",
+      "comparison": {
+        "audio": {
+          "available": true,
+          "exact_equal": false,
+          "shape_equal": true,
+          "differing_positions": 1
+        },
+        "visual": {
+          "available": true,
+          "exact_equal": false,
+          "shape_equal": true,
+          "differing_positions": 1
+        }
+      }
+    },
+    {
+      "split": "val",
+      "video": "4O9rI-FpqLg",
+      "comparison": {
+        "audio": {
+          "available": true,
+          "exact_equal": false,
+          "shape_equal": true,
+          "differing_positions": 2
+        },
+        "visual": {
+          "available": true,
+          "exact_equal": false,
+          "shape_equal": true,
+          "differing_positions": 6
+        }
+      }
+    },
+    {
+      "split": "val",
+      "video": "8sfcMZ8A3OQ",
+      "comparison": {
+        "audio": {
+          "available": true,
+          "exact_equal": false,
+          "shape_equal": true,
+          "differing_positions": 4
+        },
+        "visual": {
+          "available": true,
+          "exact_equal": true,
+          "shape_equal": true,
+          "differing_positions": 0
+        }
+      }
+    },
+    {
+      "split": "test",
+      "video": "4YdbENYcIyE",
+      "comparison": {
+        "audio": {
+          "available": true,
+          "exact_equal": false,
+          "shape_equal": true,
+          "differing_positions": 4
+        },
+        "visual": {
+          "available": true,
+          "exact_equal": true,
+          "shape_equal": true,
+          "differing_positions": 0
+        }
+      }
+    },
+    {
+      "split": "test",
+      "video": "KSRjje7GH44",
+      "comparison": {
+        "audio": {
+          "available": true,
+          "exact_equal": true,
+          "shape_equal": true,
+          "differing_positions": 0
+        },
+        "visual": {
+          "available": true,
+          "exact_equal": false,
+          "shape_equal": true,
+          "differing_positions": 1
+        }
+      }
+    }
+  ],
+  "historical_equivalence": false
+}

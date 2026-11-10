@@ -1,0 +1,32 @@
+{
+  "state": "complete",
+  "scope": "2 real UnAV train videos + 1 validation video; reduced hidden_dim=8, one layer; not the full teacher",
+  "train_loss": {
+    "loss_video": 0.0,
+    "loss_av": 0.4263275946599539,
+    "loss_all": 0.4263275946599539
+  },
+  "validation_loss": {
+    "loss_video": 0.0,
+    "loss_av": 0.39395817154931223,
+    "loss_all": 0.39395817154931223
+  },
+  "validation_metrics": {
+    "Seg-a": 100.0,
+    "Seg-v": 100.0,
+    "Seg-av": 0.0,
+    "Seg-type": 66.66666666666667,
+    "Seg-event": 100.0,
+    "Event-a": 100.0,
+    "Event-v": 100.0,
+    "Event-av": 0.0,
+    "Event-type": 66.66666666666667,
+    "Event-event": 100.0
+  },
+  "video_ids": [
+    "3H3g6xXCvwc",
+    "7e8tEbQAEco",
+    "ccoAlZogjF8"
+  ],
+  "parameter_update_verified": true
+}

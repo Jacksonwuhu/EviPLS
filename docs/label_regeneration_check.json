@@ -1,0 +1,57 @@
+{
+  "scope": "first two real training videos; regenerated with fully recalibrated validation thresholds",
+  "videos": 2,
+  "total_label_positions": 1000,
+  "differing_positions": 0,
+  "samples": [
+    {
+      "split": "train",
+      "video": "BjCEufrlXm4",
+      "filename": "BjCEufrlXm4_20_30",
+      "weak_labels": [
+        "Speech",
+        "Dog"
+      ],
+      "comparison": {
+        "audio": {
+          "available": true,
+          "exact_equal": true,
+          "shape_equal": true,
+          "differing_positions": 0
+        },
+        "visual": {
+          "available": true,
+          "exact_equal": true,
+          "shape_equal": true,
+          "differing_positions": 0
+        }
+      }
+    },
+    {
+      "split": "train",
+      "video": "7nSYwyaP4QE",
+      "filename": "7nSYwyaP4QE_50_60",
+      "weak_labels": [
+        "Singing",
+        "Banjo"
+      ],
+      "comparison": {
+        "audio": {
+          "available": true,
+          "exact_equal": true,
+          "shape_equal": true,
+          "differing_positions": 0
+        },
+        "visual": {
+          "available": true,
+          "exact_equal": true,
+          "shape_equal": true,
+          "differing_positions": 0
+        }
+      }
+    }
+  ],
+  "threshold_source": "pretrain/thresholds/llp",
+  "full_dataset_equivalence_verified": false,
+  "additional_val_test_checks": "not completed; process received SIGKILL"
+}
