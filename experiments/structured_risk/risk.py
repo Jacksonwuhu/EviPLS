@@ -1,8 +1,6 @@
 """Canonical binary-Dirichlet risk primitives for isolated experiments.
 
-This module deliberately has no model, dataloader, checkpoint, or filesystem
-dependency.  It is used first in CPU golden-value tests before being connected
-to the NREP training loop.
+Provides risk calculations for training experiments and CPU numerical tests.
 """
 
 from __future__ import annotations

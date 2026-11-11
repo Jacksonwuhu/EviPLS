@@ -1,4 +1,4 @@
-"""CPU-only command and output-safety checks; never starts a model run."""
+"""CPU tests for command construction and output directory validation."""
 
 import ast
 import contextlib

@@ -1,4 +1,4 @@
-"""Small, one-thread CPU tests; never instantiate the full five-layer teacher."""
+"""Teacher training tests using small models and one CPU thread."""
 import contextlib
 import io
 import json

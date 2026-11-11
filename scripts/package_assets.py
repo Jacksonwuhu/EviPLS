@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build bounded Git LFS tarballs from the audited inputs; never modify inputs."""
+"""Package dataset files into size-limited Git LFS archives with hash manifests."""
 from pathlib import Path
 import gzip, hashlib, json, sys, tarfile
 ROOT=Path(__file__).resolve().parents[1]

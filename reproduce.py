@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Portable, non-overwriting launchers for the frozen main_v3 protocols.
+"""Command-line launchers for teacher training, calibration and LLP experiments.
 
-Dry runs only print commands. Numerical implementations are imported/executed
-with the original default numerical recipe. LLP training retains its historical
-end-of-round test evaluations, which must not be used to tune the recipe.
+Each run stores its configuration and logs in a dedicated directory. Dry runs
+print the commands. LLP checkpoint selection uses validation scores; test
+metrics are logged at the end of each round.
 """
 
 from __future__ import annotations

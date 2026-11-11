@@ -1,8 +1,7 @@
 """Run bounded, validation-only scheduler screens on the legacy paper pipeline.
 
-This module intentionally leaves :mod:`main_ipr` unchanged.  It delegates the
-historical random/similarity/U-HNM controls to the original trainer and only
-patches the training step for the two new controls:
+Uses :mod:`main_ipr` for random/similarity/U-HNM controls and supplies custom
+training steps for the following controls:
 
 * ``no_mix``: original pseudo-label objective without the auxiliary exchange.
 * ``risk_anchor``: high-risk visual anchors paired with compatible low-risk

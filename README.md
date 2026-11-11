@@ -1,10 +1,10 @@
 # EviPLS：UnAV 教师 → LLP 伪标签 → U-HNM + IPR
 
-这是从原 NREP 工作区整理出的 **AVVP/LLP 完整特征级复现版本**。统一入口为 `reproduce.py`；训练数据、文本嵌入、冻结伪标签、教师和主模型权重都有明确目录及校验记录。
+EviPLS 是用于音视频事件解析（AVVP）的训练项目，提供 UnAV 教师训练、LLP 伪标签生成和 U-HNM + IPR 主模型训练。仓库包含特征数据、预训练权重和统一命令行入口 `reproduce.py`。
 
 流程以已提取的 CLAP、CLIP、R2Plus1D 特征为输入。教师使用 UnAV 时序标注训练，逐类阈值使用 LLP 验证集的模态时序标注校准，主模型使用生成的伪标签训练。
 
-## 1. 获取代码、数据和环境
+## 安装
 
 ```bash
 # 分别下载代码和 LFS 数据。
@@ -29,13 +29,12 @@ python prepare_data.py --unav --base-url https://hf-mirror.com
 
 下载预算默认为 2 小时，最多下载约 2.18 GB UnAV 压缩数据。可用 `--cache /path/to/cache` 分离缓存位置；错误代理环境可加 `--ignore-proxy`。安装程序检查文件完整性，并在文件缺失、损坏、仍为 LFS 指针或与已有内容冲突时报告具体错误。磁盘建议为代码、LFS 缓存、压缩包、解压数据共预留 25 GB，正式训练另留权重空间。
 
-环境配置：Linux / Python 3.10 / PyTorch 1.12.1 / torchvision 0.13.1 / CUDA 11.3。`requirements-runtime.txt` 固定直接依赖版本，传递依赖由包管理器解析。完整训练使用 GPU；CPU 可用于输入检查、推理及小批量流程测试。环境验证记录见[核验报告](docs/VERIFICATION.md)。
+环境配置：Linux / Python 3.10 / PyTorch 1.12.1 / torchvision 0.13.1 / CUDA 11.3。`requirements-runtime.txt` 固定直接依赖版本，传递依赖由包管理器解析。完整训练使用 GPU；CPU 可用于输入检查、推理及小批量流程测试。测试命令与参考结果见[测试指南](docs/TESTING.md)。
 
-## 2. 先核验全部输入
+## 数据检查
 
 ```bash
 python verify.py --installed
-python -m unittest discover -s tests -v
 python -m nrep.validation --json
 python reproduce.py train-teacher --run-id input_check --check-only
 python scripts/audit_inputs.py --output artifacts/input_audit.json
@@ -43,7 +42,7 @@ python scripts/audit_inputs.py --output artifacts/input_audit.json
 
 检查包括：LLP 10,000/649/1,200 三个划分、11 位视频键不冲突、全部输入形状及有限值、全部伪标签范围、UnAV train/validation 的标注与类别顺序、CLAP/CLIP 特征。`audit_inputs.py` 还检查 LLP 教师输入，检查范围为数据读取、形状、数值和文件哈希。
 
-## 3. 从 UnAV 开始运行全部阶段
+## 训练
 
 ```bash
 RUN_ID=unav_to_llp_s6 PYTHON_BIN=python bash scripts/run_full_pipeline.sh
@@ -73,13 +72,11 @@ python reproduce.py evaluate-llp --run-id test_s6 \
   --label-root artifacts/labels_s1000/labels
 ```
 
-原始 LLP 音频标注有一条 `onset=9, offset=0` 的反向区间。该区间按原教师和解析器的空切片语义处理；详见 `docs/annotation_anomalies.json`。
-
 教师按 UnAV validation Seg-AV 选模。每个新教师在 649 个 LLP 验证视频上校准配套阈值，并通过哈希绑定权重和阈值文件。伪标签生成阶段读取特征、视频级标签和配套阈值，输出保存到新的运行目录。
 
 主训练默认设置为 `loss_semantics=legacy`、每轮音频/视觉各 10 epoch、两轮、batch 128、lr 5e-4、IPR η=0.3。权重选择和超参数调整依据验证集；训练器在每轮末额外记录测试指标。
 
-## 4. 使用已有教师或伪标签
+## 预训练模型与伪标签
 
 ```bash
 # 使用配套阈值为所有 LLP 划分生成标签，输出到新目录。
@@ -95,27 +92,28 @@ python reproduce.py evaluate-llp --run-id frozen_test_s6 \
   --checkpoint weights/llp/seed6_round2.pt
 ```
 
-**阈值路径修正：** 旧 `data/CLAP` 阈值在六视频检查中产生 19 个缓存差异，原文件保留供追溯。本版本默认改用 `pretrain/thresholds/llp`：由相同冻结教师在完整 649 视频验证集重新校准，并绑定权重、类别嵌入与数据哈希。新阈值已完成两个训练视频的缓存对比，结果逐位一致；全量标签对比待完成。见 `docs/label_regeneration_check.json` 和 `docs/legacy_threshold_label_check.json`。复核旧结果用冻结标签；从教师重新运行则全量生成新的标签，并作为新的实验记录。
+默认教师使用 `pretrain/thresholds/llp` 中的配套阈值。复现已发布权重的结果时，使用随数据包提供的冻结伪标签；训练新教师时，运行校准和生成命令创建对应标签。阈值选择与缓存差异见[常见问题](docs/TROUBLESHOOTING.md)。
 
 所有启动命令可加 `--dry-run` 打印完整参数。`generate-labels --device cpu --limit 3` 用于三个视频的教师推理检查。完整训练入口要求所有划分的标签齐全；用于训练的标签请按上面的默认命令全量生成。`train-llp --epochs 1` 使用完整数据，将每个训练阶段缩短为 1 epoch，便于检查训练流程。
 
-## 5. 数据与代码位置
+## 项目结构
 
-| 用途 | 目录 | 单视频形状 |
-|---|---|---|
-| UnAV 标注 | `data/UnAV/unav100_annotations.json` | 100 类，train/validation/test |
-| UnAV 教师音频/视觉 | `data/UnAV/feats_CLAP/segment_feats`、`feats_CLIP/segment_feats` | `(L,512)` / `(L,768)` |
-| UnAV 文本类别嵌入 | 各模态 `event_feats/all_event_feats.npy` | `(100,512)` / `(100,768)` |
-| LLP 教师音频/视觉 | `pretrain/data/LLP/feats_CLAP`、`feats_CLIP` | 片段 `(10,512)` / `(10,768)`，文本为 25 类 |
-| LLP 主模型音频 | `data/CLAP/features` | `(64,768)` |
-| LLP 主模型视觉 | `data/CLIP/features` | `(10,768)` |
-| LLP 主模型时空 | `pretrain/data/LLP/feats/r2plus1d_18` | `(10,512)` |
-| 冻结伪标签 | `data/CLAP/a_segmentwise_pseudo_labels`、`data/CLIP/v_segmentwise_pseudo_labels` | `(10,25)` |
-| 默认教师阈值 | `pretrain/thresholds/llp/{a,v}_classwise_threhsolds.npy` | `(25,)`，完整验证集重新校准；历史文件名拼写保留 |
-| 历史阈值存档 | `data/CLAP/{a,v}_classwise_threhsolds.npy` | 仅追溯旧数据，不作默认输入 |
-| 新伪标签 | `artifacts/<run-id>/labels/{audio,visual}` | `(10,25)` |
-| IPR 精炼标签 | `artifacts/<run-id>/pseudo_labels/round_2/{audio,visual}` | `(10,25)` 软标签 |
+| 路径 | 功能 |
+|---|---|
+| `reproduce.py` | 训练、校准、标签生成与评估入口 |
+| `teacher_train.py`、`calibrate_teacher.py`、`generate_labels.py` | 教师训练及伪标签流程 |
+| `main_ipr.py`、`nets/`、`nrep/` | U-HNM + IPR 主训练和模型组件 |
+| `main_baseline.py`、`main_uhnm.py`、`experiments/` | 对照方法和调度实验 |
+| `prepare_data.py`、`verify.py` | 数据安装与完整性检查 |
+| `data/`、`pretrain/data/`、`assets/` | 标注、特征和分发包 |
+| `tests/`、`scripts/smoke_*.py` | 单元测试和小样本训练检查 |
+| `artifacts/`、`models/`、`logger/` | 运行配置、训练产物和日志 |
 
-`teacher_train.py`、`calibrate_teacher.py`、`generate_labels.py` 是上游三阶段；`main_ipr.py`、`dataloader.py`、`nets/`、`nrep/` 是下游主流程。`main_baseline.py`、`main_uhnm.py` 和 `experiments/` 保留相关控制/依赖，默认入口不自动运行扩展实验。
+所有推荐命令基于仓库根目录解析相对路径。
 
-所有推荐命令基于仓库根目录解析相对路径。完整验证范围、修正内容和未完成项见 [核验报告](docs/VERIFICATION.md)，数据来源和冻结结果见 [来源记录](docs/PROVENANCE.md)。
+## 文档
+
+- [数据目录与格式](docs/DATA_LAYOUT.md)
+- [测试与参考结果](docs/TESTING.md)
+- [常见问题](docs/TROUBLESHOOTING.md)
+- [数据与代码来源](docs/PROVENANCE.md)

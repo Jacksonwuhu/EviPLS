@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Full input inventory. No model, training, test-based selection or writes to inputs."""
+"""Validate LLP and UnAV features, labels, category mappings and file hashes."""
 import argparse, csv, gzip, json, sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]

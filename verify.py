@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify delivered archives or every installed LLP input against SHA256."""
+"""Verify dataset archives and installed LLP files against SHA256 manifests."""
 import argparse,gzip,json
 from pathlib import Path
 from prepare_data import ROOT,sha256,safe_relative

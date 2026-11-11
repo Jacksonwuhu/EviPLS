@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Portable UnAV100 teacher training, preserving the original numerical recipe.
+"""Train the UnAV100 teacher from CLAP and CLIP features.
 
-Only unused VGGish/I3D reads are omitted. Annotation parsing, pooling, padding,
-masks, collation, Transformer, loss, scheduler and validation decoder are the
-original implementations. No TEST selection, network download or wandb service.
+Uses temporal annotations, variable-length batching and a TemporalTransformer.
+Checkpoint selection uses UnAV validation scores; run outputs are stored locally.
 """
 from __future__ import annotations
 

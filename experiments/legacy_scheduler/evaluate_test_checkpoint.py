@@ -1,8 +1,7 @@
 """Evaluate one frozen checkpoint on the canonical AVVP test split.
 
-This evaluator is intentionally separate from evaluate_validation.py:
-test evaluation is an end-point comparison only and must never be used for
-candidate selection or hyper-parameter tuning.
+Reports final test metrics for a selected checkpoint. Candidate selection and
+hyperparameter tuning use validation scores.
 """
 
 from __future__ import annotations

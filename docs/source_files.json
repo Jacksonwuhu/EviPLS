@@ -15,24 +15,24 @@
   },
   {
     "path": "experiments/legacy_scheduler/evaluate_test_checkpoint.py",
-    "sha256": "1771dfb4abcd7e3880bac8afc657804e807cd01afe69f9f9f3d20c566bfcbb4e",
+    "sha256": "6c096ca994d8d0420f8466abb4c44e8f411b887e1c5994a4ded6d3768e838479",
     "origin": "deliverables/EviPLS_core_20261012/experiments/legacy_scheduler/evaluate_test_checkpoint.py",
     "source_sha256": "dac56ddc8a622b8bb668fb8f739b396564c88ebe991e5c9930f25eec91a8fc1f",
     "changed": true
   },
   {
     "path": "experiments/legacy_scheduler/runner.py",
-    "sha256": "962b901fdd2c8252c17dc9170b5d52207bc09865074a7f156f2cec8b5ae39b4f",
+    "sha256": "69e74015b9c69cd28b1c561791345fe7ea7c594ff3a879493bafc55b3e7c97ac",
     "origin": "experiments/legacy_scheduler/runner.py",
     "source_sha256": "962b901fdd2c8252c17dc9170b5d52207bc09865074a7f156f2cec8b5ae39b4f",
-    "changed": false
+    "changed": true
   },
   {
     "path": "experiments/structured_risk/risk.py",
-    "sha256": "8505a755cc73d018f9999619296fca07ab4522880c402648d39f77a05fb35a22",
+    "sha256": "67a8638db31cedfd280648719a90835bd1b8156b55284f1cf5ae940f642c27d7",
     "origin": "deliverables/EviPLS_core_20261012/experiments/structured_risk/risk.py",
     "source_sha256": "8505a755cc73d018f9999619296fca07ab4522880c402648d39f77a05fb35a22",
-    "changed": false
+    "changed": true
   },
   {
     "path": "generate_labels.py",
@@ -203,20 +203,20 @@
   },
   {
     "path": "reproduce.py",
-    "sha256": "5e18624da0c9da157d52ab668ba2044bdce3d7191c243acebd727dadc9483847",
+    "sha256": "169a1bd3e3fb111dc25e8d2f759138f4ac52bb6dcaba30640362557f7a85d1b3",
     "origin": "deliverables/EviPLS_core_20261012/reproduce.py",
     "source_sha256": "31f60e4db654ef4dd5d898a72f3c3709700f65357db3fb1f6e8a10b8dc135487",
     "changed": true
   },
   {
     "path": "scripts/audit_inputs.py",
-    "sha256": "916d9c6b14e42c9db36757521b312b9f5ba78c2c68ba42ce7e2fba005ad68f5f",
+    "sha256": "cf9b0f4ec146e0d1734268844bb8267759c7a5fd2fc0cc1b57d58a6fde22acc0",
     "origin": "new reproducibility adapter",
     "changed": true
   },
   {
     "path": "scripts/package_assets.py",
-    "sha256": "29820752ccd149824701b225430ce57c7b894ae2063c07266190667845d6849b",
+    "sha256": "9844d900cc1017f5a74c38eb4d9f071486dca0248d30442fd98fb3ecb0921c22",
     "origin": "new reproducibility adapter",
     "changed": true
   },
@@ -234,7 +234,7 @@
   },
   {
     "path": "teacher_train.py",
-    "sha256": "6ddafcff4d4323b1739edd9de0f81d6e1920bf256a89cd8f1536c8572ca10cf8",
+    "sha256": "7cfa7e123ecf1d2e6ae4b01a529f77e2b1e62e454bafe061c0fb8ad15623ac7e",
     "origin": "deliverables/EviPLS_core_20261012/teacher_train.py",
     "source_sha256": "1ae87020bf4e272901cfe7acf02f97303e9524639821f870ed00c2918fd60bd9",
     "changed": true
@@ -261,7 +261,7 @@
   },
   {
     "path": "tests/test_reproduce.py",
-    "sha256": "0cc383b6bf012c85d80c7324796b557f0e0cbf90075c4d1af85db011ee9b3b5c",
+    "sha256": "54158571431baf7058e3ced47547eb0621bcb760a8d4b6d44dfcfdcc23578594",
     "origin": "deliverables/EviPLS_core_20261012/tests/test_reproduce.py",
     "source_sha256": "4d9e97e0226b44800e39c5b19767c64d7082467e6d0c5d9edba1248cfdc4ee17",
     "changed": true
@@ -301,7 +301,7 @@
   },
   {
     "path": "tests/test_teacher_train.py",
-    "sha256": "f781abfbfe00d93bb136bd40148f4daa6d93a247b0cc12da95d1dffecfba1140",
+    "sha256": "89cb01afffb93e7f706de25459091f9de2370e3783aff970eeab82502a6404ff",
     "origin": "deliverables/EviPLS_core_20261012/tests/test_teacher_train.py",
     "source_sha256": "1d9be865abd4aba7ef40b9cffab11e3def780eb6481de4f9f578d7fffbc2b1ba",
     "changed": true
@@ -343,7 +343,7 @@
   },
   {
     "path": "verify.py",
-    "sha256": "9078aa174ac4f8e020abd6e10255e20bd8e1abfe6bf64f8f657301b0f56c42f9",
+    "sha256": "c9d3b4443107ce5ade911156d0c5a805cb807ad42f4fdc3bcfa45c7e54b44b53",
     "origin": "deliverables/EviPLS_core_20261012/verify.py",
     "source_sha256": "3e394fea178ac8e496b9bd8a9f1929c9d718c9a5738b39bf513255b2ed31063b",
     "changed": true

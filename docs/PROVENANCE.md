@@ -1,6 +1,10 @@
 # 数据与代码来源
 
-整理基础：原工作区当前 AVVP 主线及 `deliverables/EviPLS_core_20261012` 中的便携教师适配器。原 Git 基线为 `5708f81e0`；工作区的后续未提交主线改动已按范围纳入新版本，原工作区保留。主模型数学实现和 legacy 损失语义保持一致；CPU 设备、路径与核验变更另有记录。
+## 实现来源
+
+主模型基于 [NREP](https://github.com/Jacksonwuhu/NREP/tree/5708f81e0)（*Resisting Noise in Pseudo-Labels: Audible Video Event Parsing with Evidential Learning*），教师采用 [UWAV](https://github.com/Franklin905/UWAV) 的 TemporalTransformer。EviPLS 提供 U-HNM 训练调度、IPR 标签精炼及统一训练入口。
+
+[source_files.json](source_files.json) 记录源文件的路径、来源和 SHA256。默认主训练采用 `loss_semantics=legacy`；配置见 [README](../README.md)。
 
 ## 数据来源
 
@@ -24,6 +28,4 @@ UnAV 为 6,489 train / 2,134 validation / 2,167 test；训练与选模只读取�
 - `weights/llp/seed6_round1.pt`：对应已保留第一轮权重。
 - `weights/llp/historical_full_round2.pt`：历史单次实验的第二轮权重；三种子实验的 seed 6 权重为 `seed6_round2.pt`。
 
-新教师、伪标签和主训练产物按运行 ID 分目录保存。已有权重的评估结果、流程测试和待完成训练记录见[核验报告](VERIFICATION.md)。
-
-主解析器沿用 NREP（论文 *Resisting Noise in Pseudo-Labels: Audible Video Event Parsing with Evidential Learning*）；[历史代码基线](https://github.com/Jacksonwuhu/NREP/tree/5708f81e0)。教师采用 UWAV TemporalTransformer。EviPLS 的训练调度、后续适配与本次可复现性修正按来源清单单独追踪。
+权重哈希及参考指标见 [frozen_reference.json](frozen_reference.json)，评估命令见[测试指南](TESTING.md)。新训练的产物按运行 ID 保存在 `artifacts/` 和 `models/` 下。
