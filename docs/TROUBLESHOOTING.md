@@ -24,7 +24,7 @@
 
 为该 checkpoint 执行 `calibrate-teacher`，再将输出目录通过 `--threshold-dir` 传给 `generate-labels`。校准清单绑定教师权重、文本嵌入、验证划分和阈值哈希。
 
-默认冻结教师的阈值位于 `pretrain/thresholds/llp`，由 649 个 LLP 验证视频校准。`data/CLAP` 下的旧阈值与冻结标签存在差异：六视频检查中有 19 个二值位置不同，见 [差异记录](legacy_threshold_label_check.json)。配套阈值的两个训练视频检查与缓存一致，全量等价性尚未验证。评估已发布主模型时使用冻结标签；训练新教师时使用对应校准流程生成标签。
+默认冻结教师的阈值位于 `pretrain/thresholds/llp`，由 649 个 LLP 验证视频校准。`data/CLAP` 下的旧阈值与冻结标签存在差异：六视频检查中有 19 个二值位置不同，见 [差异记录](legacy_threshold_label_check.json)。配套阈值在 train/val/test 各两个视频上的检查与缓存一致，见 [first_use_check.json](first_use_check.json)；全量等价性尚未验证。评估已发布主模型时使用冻结标签；训练新教师时使用对应校准流程生成标签。
 
 ## 主训练提示标签不完整
 

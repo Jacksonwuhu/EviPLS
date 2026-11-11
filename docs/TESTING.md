@@ -55,7 +55,7 @@ python reproduce.py evaluate-llp --run-id test_seed6 \
 | 教师训练接口 | 小型骨干的优化器更新和验证通过 | [teacher_step_smoke.json](teacher_step_smoke.json) |
 | 两轮主训练接口 | 使用历史阈值生成的六视频标签，完成两轮训练 | [two_round_smoke.json](two_round_smoke.json) |
 | 阈值校准 | 五层冻结教师，完整 649 视频验证集 | [calibration_check.json](calibration_check.json) |
-| 配套阈值标签对比 | 2 个训练视频的 1,000 个标签位置与缓存一致 | [label_regeneration_check.json](label_regeneration_check.json) |
+| 配套阈值与训练衔接 | 新环境生成 train/val/test 各 2 个视频的标签，3,000 个位置与缓存一致，并用这些标签完成两轮主训练 | [first_use_check.json](first_use_check.json) |
 | 历史阈值标签对比 | 6 个视频的 3,000 个标签位置中有 19 个差异 | [legacy_threshold_label_check.json](legacy_threshold_label_check.json) |
 
-参考记录来自 Python 3.10 / PyTorch 1.12.1 CPU 环境。端到端 GPU 重训、完整 Conda 环境重建、配套阈值的全量标签对比及后续两轮训练、seed 17/42 的再次全量评估尚无对应验证记录。训练配置和命令见 [README](../README.md)。
+全新克隆和独立 Python 3.10 / PyTorch 1.12.1 CPU 环境的检查见 [first_use_check.json](first_use_check.json)：95 项测试、全量输入检查、安装文件校验及小样本训练通过。GPU Conda 配置通过依赖求解；完整 GPU 环境安装、端到端 GPU 重训、全部 11,849 视频的标签对比和 seed 17/42 的再次全量评估尚无对应验证记录。训练配置和命令见 [README](../README.md)。

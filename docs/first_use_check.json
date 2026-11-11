@@ -1,0 +1,218 @@
+{
+  "code_commit": "02014a4b6799005bd25397123e65ed13e98a014c",
+  "fresh_remote_clone": true,
+  "transport": {
+    "remote_clone": true,
+    "lfs_download": {
+      "file": "student_audio_03.tar.gz",
+      "bytes": 414316327,
+      "sha256": "a6a98c4cfd1f9524012e58c90013ee595075c128209342124ef98e329a739ab4",
+      "verified": true
+    },
+    "remaining_archives": "seven SHA256-pinned objects reused from existing LFS cache"
+  },
+  "environment": {
+    "python": "3.10.13",
+    "torch": "1.12.1+cpu",
+    "isolated_venv": true,
+    "pip_check": "passed",
+    "gpu_conda_dependency_resolution": "passed: libmamba, pytorch + defaults, numpy=1.22.3",
+    "gpu_conda_environment_installation": "not executed",
+    "cuda_available": false
+  },
+  "unit_tests": {
+    "passed": 95
+  },
+  "installed_file_verification": {
+    "status": "passed",
+    "checked_files": 86713,
+    "installed_checked": true
+  },
+  "unav_repeat_install": "passed",
+  "input_audit": {
+    "status": "passed",
+    "llp": {
+      "videos": 11849,
+      "split_sizes": {
+        "train": 10000,
+        "val": 649,
+        "test": 1200
+      },
+      "checked_arrays": 59245
+    },
+    "unav_splits": {
+      "train": 6489,
+      "validation": 2134
+    }
+  },
+  "teacher_optimizer_step": {
+    "state": "complete",
+    "train_videos": 2,
+    "validation_videos": 1,
+    "hidden_dim": 8,
+    "layers": 1
+  },
+  "label_generation": {
+    "state": "complete",
+    "videos": 6,
+    "splits": [
+      "train",
+      "val",
+      "test"
+    ],
+    "label_positions": 3000,
+    "differing_positions": 0,
+    "samples": [
+      {
+        "split": "train",
+        "video": "BjCEufrlXm4",
+        "filename": "BjCEufrlXm4_20_30",
+        "weak_labels": [
+          "Speech",
+          "Dog"
+        ],
+        "comparison": {
+          "audio": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          },
+          "visual": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          }
+        }
+      },
+      {
+        "split": "train",
+        "video": "7nSYwyaP4QE",
+        "filename": "7nSYwyaP4QE_50_60",
+        "weak_labels": [
+          "Singing",
+          "Banjo"
+        ],
+        "comparison": {
+          "audio": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          },
+          "visual": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          }
+        }
+      },
+      {
+        "split": "val",
+        "video": "4O9rI-FpqLg",
+        "filename": "4O9rI-FpqLg_10_20",
+        "weak_labels": [
+          "Cheering",
+          "Speech",
+          "Clapping"
+        ],
+        "comparison": {
+          "audio": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          },
+          "visual": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          }
+        }
+      },
+      {
+        "split": "val",
+        "video": "8sfcMZ8A3OQ",
+        "filename": "8sfcMZ8A3OQ_180_190",
+        "weak_labels": [
+          "Frying_(food)",
+          "Speech"
+        ],
+        "comparison": {
+          "audio": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          },
+          "visual": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          }
+        }
+      },
+      {
+        "split": "test",
+        "video": "4YdbENYcIyE",
+        "filename": "4YdbENYcIyE_23_33",
+        "weak_labels": [
+          "Baby_cry_infant_cry"
+        ],
+        "comparison": {
+          "audio": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          },
+          "visual": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          }
+        }
+      },
+      {
+        "split": "test",
+        "video": "KSRjje7GH44",
+        "filename": "KSRjje7GH44_60_70",
+        "weak_labels": [
+          "Blender",
+          "Speech"
+        ],
+        "comparison": {
+          "audio": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          },
+          "visual": {
+            "available": true,
+            "exact_equal": true,
+            "shape_equal": true,
+            "differing_positions": 0
+          }
+        }
+      }
+    ]
+  },
+  "student_training": {
+    "state": "complete",
+    "labels": "newly generated six-video subset",
+    "rounds": 2,
+    "epochs_per_phase": 1,
+    "checkpoint_sha256": "d4bac69ec1935f50b918d0d020c340d2abe975e003658f4aa8e390ac0cb03b19"
+  },
+  "full_gpu_training": {
+    "executed": false,
+    "reason": "CUDA unavailable"
+  },
+  "ci": "https://github.com/Jacksonwuhu/EviPLS/actions/runs/42966657172"
+}
