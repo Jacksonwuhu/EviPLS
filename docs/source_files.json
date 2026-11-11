@@ -148,7 +148,7 @@
   },
   {
     "path": "prepare_data.py",
-    "sha256": "93c19a2d4fccda698e730163bde72c92a90e9daa4c30531f0b5ecc14f070fcca",
+    "sha256": "7aebf0e2edcab1ce8028c0b380f3b3b159eb242843e4501a4df7918b91f720a3",
     "origin": "new reproducibility adapter",
     "changed": true
   },
@@ -210,7 +210,7 @@
   },
   {
     "path": "scripts/audit_inputs.py",
-    "sha256": "cf9b0f4ec146e0d1734268844bb8267759c7a5fd2fc0cc1b57d58a6fde22acc0",
+    "sha256": "96b845f7f1de0a7a1d209f9515f76b4173bdc77ef8dd1f25b6c2d0943b311e73",
     "origin": "new reproducibility adapter",
     "changed": true
   },
@@ -347,5 +347,17 @@
     "origin": "deliverables/EviPLS_core_20261012/verify.py",
     "source_sha256": "3e394fea178ac8e496b9bd8a9f1929c9d718c9a5738b39bf513255b2ed31063b",
     "changed": true
+  },
+  {
+    "path": "tests/test_install_resume.py",
+    "origin": "installation and pipeline regression tests",
+    "changed": true,
+    "sha256": "7a4677011ebf7bd6bae2637e439814bdfab50747026db72439bf4a578bb20f68"
+  },
+  {
+    "path": "tests/test_pipeline_script.py",
+    "origin": "installation and pipeline regression tests",
+    "changed": true,
+    "sha256": "a1bc5e776252d300d29f31e2b552766257cdee5bfa19257cdf3e001ccf42ebd2"
   }
 ]

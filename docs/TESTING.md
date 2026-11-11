@@ -7,9 +7,10 @@
 ```bash
 python -m unittest discover -s tests -v
 bash -n scripts/run_full_pipeline.sh
+DRY_RUN=1 RUN_ID=preview PYTHON_BIN=python bash scripts/run_full_pipeline.sh
 ```
 
-测试覆盖数据完整性、阈值与权重绑定、模型加载、风险计算、损失函数、训练调度和运行超时处理。单元测试使用小型输入，可在 CPU 上运行。GitHub Actions 在 Python 3.10 / PyTorch 1.12.1 CPU 环境执行相同检查，状态见 [Actions](https://github.com/Jacksonwuhu/EviPLS/actions)。
+测试覆盖安装中断重试、流水线阶段衔接、数据完整性、阈值与权重绑定、模型加载、风险计算、损失函数、训练调度和运行超时处理。单元测试使用小型输入，可在 CPU 上运行。GitHub Actions 在 Python 3.10 / PyTorch 1.12.1 CPU 环境执行相同检查，状态见 [Actions](https://github.com/Jacksonwuhu/EviPLS/actions)。
 
 ## 数据检查
 

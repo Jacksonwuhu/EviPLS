@@ -30,9 +30,11 @@ def audit(root=ROOT):
     return report
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
-    if a.output.exists():raise FileExistsError(a.output)
-    report=audit();a.output.parent.mkdir(parents=True,exist_ok=True)
-    with a.output.open('x') as f:json.dump(report,f,indent=2)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--output',type=Path);a=p.parse_args()
+    if a.output and a.output.exists():raise FileExistsError(a.output)
+    report=audit()
+    if a.output:
+        a.output.parent.mkdir(parents=True,exist_ok=True)
+        with a.output.open('x') as f:json.dump(report,f,indent=2)
     print(json.dumps({'status':report['status'],'LLP':report['llp'],'UnAV':report['unav']['split_counts']},indent=2))
 if __name__=='__main__':main()

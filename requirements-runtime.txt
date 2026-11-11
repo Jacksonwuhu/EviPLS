@@ -1,8 +1,4 @@
-# Install torch 1.12.1 / torchvision 0.13.1 / CUDA 11.3 with environment.yml first.
-# Direct runtime dependencies, pinned to the audited working environment.
-# Not a complete transitive lock; no CLIP/CLAP extractor download is required
-# for the frozen-feature protocol. pytest is optional and was absent locally;
-# the supplied unittest command is the verified test entry point.
+# Install PyTorch and torchvision with environment.yml before these dependencies.
 numpy==1.22.3
 pandas==2.0.3
 scipy==1.11.2
@@ -13,6 +9,6 @@ einops==0.8.2
 tqdm==4.69.0
 Pillow==9.4.0
 protobuf==3.20.3
-# Match the audited legacy runtime's packaging helpers as well.
+# Packaging helpers for the PyTorch 1.12 runtime.
 setuptools==68.0.0
 packaging==23.1

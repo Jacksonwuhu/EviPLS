@@ -13,6 +13,7 @@ import tempfile
 import time
 import urllib.request
 import zipfile
+import zlib
 
 ROOT = Path(__file__).resolve().parent
 REVISION = '71dcb419fb8ff88ce289b396470abdf8b597f27e'
@@ -53,6 +54,25 @@ def download(url, destination, digest, size, deadline, ignore_proxy=False):
  if total!=size or h.hexdigest()!=digest: raise ValueError(f'Download checksum/size mismatch: {destination.name}')
  partial.rename(destination)
 
+def verify_zip_install(archive, destination):
+ """Check an existing installation against the checksum-verified ZIP."""
+ with zipfile.ZipFile(archive) as z:
+  for info in z.infolist():
+   relative = safe_relative(info.filename)
+   target = destination.joinpath(*relative.parts)
+   if any(p.is_symlink() for p in (target, *target.parents)):
+    raise ValueError(f'Symlink in installed features: {target}')
+   if info.is_dir():
+    if not target.is_dir(): raise ValueError(f'Missing installed directory: {target}')
+    continue
+   if not target.is_file() or target.stat().st_size != info.file_size:
+    raise ValueError(f'Missing or changed installed feature: {target}')
+   crc = 0
+   with target.open('rb') as f:
+    for block in iter(lambda: f.read(4*1024**2), b''): crc = zlib.crc32(block, crc)
+   if crc != info.CRC: raise ValueError(f'Changed installed feature: {target}')
+
+
 def extract_zip(archive,destination):
  if destination.exists(): raise FileExistsError(destination)
  destination.parent.mkdir(parents=True,exist_ok=True)
@@ -83,10 +103,20 @@ def install_assets(root=ROOT):
     if any(p.is_symlink() for p in [target,*target.parents] if p!=root.parent): raise ValueError('Refusing symlink destination')
     if target.exists():
      source=tar.extractfile(member)
-     if hashlib.sha256(source.read()).hexdigest()!=sha256(target): raise ValueError(f'Refusing to overwrite different input: {target}')
+     digest=hashlib.sha256()
+     with source:
+      for block in iter(lambda: source.read(4*1024**2), b''): digest.update(block)
+     if digest.hexdigest()!=sha256(target): raise ValueError(f'Refusing to overwrite different input: {target}')
      continue
     target.parent.mkdir(parents=True,exist_ok=True)
-    with tar.extractfile(member) as src,target.open('xb') as dst: shutil.copyfileobj(src,dst)
+    temporary=None
+    try:
+     with tempfile.NamedTemporaryFile(dir=target.parent, prefix='.install-', delete=False) as dst:
+      temporary=Path(dst.name)
+      with tar.extractfile(member) as src: shutil.copyfileobj(src,dst)
+     os.link(temporary, target)
+    finally:
+     if temporary is not None: temporary.unlink(missing_ok=True)
   print('Installed',item['file'],flush=True)
 
 def main():
@@ -108,13 +138,15 @@ def main():
   try:
    for name,(digest,size,relative) in UPSTREAM.items():
     dest=ROOT/relative
-    if dest.exists(): raise FileExistsError(f'Refusing existing UnAV feature directory: {dest}')
     url=args.base_url.rstrip('/')+'/datasets/NTUBarista/uwav_features/resolve/'+REVISION+'/'+name
     bundled=ROOT/'assets'/name
     archive=bundled if bundled.is_file() and bundled.stat().st_size==size else args.cache/name
     print('Preparing',name,flush=True)
     download(url,archive,digest,size,deadline,args.ignore_proxy)
-    extract_zip(archive,dest)
+    if dest.exists():
+     verify_zip_install(archive,dest)
+    else:
+     extract_zip(archive,dest)
     report['files'].append({'name':name,'sha256':digest,'bytes':size,'url':url})
     record.write_text(json.dumps(report,indent=2)+'\n')
     print('Verified and extracted',name,flush=True)

@@ -1,11 +1,10 @@
 # Linux x86_64 + NVIDIA CUDA environment. Run from this package directory:
-# conda env create -f environment.yml
-# Versions reflect the source machine; a clean install was not executed here.
+# conda env create --solver libmamba -f environment.yml
 name: evipls-main-v3
 channels:
   - pytorch
-  - conda-forge
   - defaults
+  - nodefaults
 dependencies:
   - python=3.10.12
   - pytorch=1.12.1=py3.10_cuda11.3_cudnn8.3.2_0
@@ -13,6 +12,7 @@ dependencies:
   - cudatoolkit=11.3.1
   - mkl=2023.1.0
   - intel-openmp=2023.1.0
+  - numpy=1.22.3
   - pip
   - pip:
       - -r requirements-runtime.txt

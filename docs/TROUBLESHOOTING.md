@@ -8,6 +8,14 @@
 
 `prepare_data.py --unav` 优先使用 `assets/` 中的压缩包。需要在线下载时，可通过 `--base-url https://hf-mirror.com` 指定镜像，通过 `--cache /path/to/cache` 指定缓存位置。代理配置错误时可加 `--ignore-proxy`；所有来源均按相同 SHA256 校验。
 
+## 数据安装中断
+
+重新运行 `python prepare_data.py --assets` 或 `python prepare_data.py --unav`。已安装内容按归档校验后跳过；新文件写入临时路径，完整写入后才发布。若提示某个已有文件内容不同，先检查该文件并移到备份位置，再运行安装。
+
+## Conda 读取了额外镜像
+
+`environment.yml` 使用 `nodefaults` 限定项目声明的渠道。可通过 `conda config --show-sources` 检查本机渠道、代理和 `channel_alias` 配置。安装日志会列出实际访问的渠道。
+
 ## 输出目录已经存在
 
 每个运行 ID 对应独立目录。将 `--run-id` 改为新名称；逐阶段运行时，可将已完成阶段的 checkpoint 或标签目录传给下一阶段。日志位置为 `artifacts/<run-id>/launcher.log`，运行配置和状态为同目录的 `run.json`。

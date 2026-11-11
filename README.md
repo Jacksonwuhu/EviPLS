@@ -6,6 +6,8 @@ EviPLS 是用于音视频事件解析（AVVP）的训练项目，提供 UnAV 教
 
 ## 安装
 
+需要 Linux x86_64、Git、Git LFS 和 Conda。Ubuntu/Debian 可通过 `sudo apt-get install git git-lfs` 安装 Git 工具；Conda 可使用 Miniconda。完整训练还需要可用的 NVIDIA GPU 和兼容 CUDA 11.3 的驱动。
+
 ```bash
 # 分别下载代码和 LFS 数据。
 GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/Jacksonwuhu/EviPLS.git
@@ -13,13 +15,16 @@ cd EviPLS
 git lfs install --local
 git lfs pull
 
-conda env create -f environment.yml
+conda env create --solver libmamba -f environment.yml
 conda activate evipls-main-v3
 python prepare_data.py --assets
 python prepare_data.py --unav
+python -c "import torch; print(torch.__version__); print('CUDA available:', torch.cuda.is_available())"
 ```
 
-`assets/` 是 Git LFS 管理的分块压缩包，包含 LLP 全链路输入及已有权重；`prepare_data.py` 校验 SHA256 后安装到项目目录。UnAV 的两份原始特征压缩包也随 Git LFS 提供；`--unav` 优先读取本地包，缺失时从固定 UWAV 作者源下载，并按固定 SHA256 校验后分别解压到两个模态目录。仓库包含原始 UnAV JSON 标注。
+GPU 训练前，上述环境检查应输出 `CUDA available: True`。
+
+`assets/` 是 Git LFS 管理的分块压缩包，包含 LLP 全链路输入及已有权重；`prepare_data.py` 校验 SHA256 后安装到项目目录。UnAV 的两份原始特征压缩包也随 Git LFS 提供；`--unav` 优先读取本地包，缺失时从固定 UWAV 作者源下载，并按固定 SHA256 校验后分别解压到两个模态目录。仓库包含原始 UnAV JSON 标注。安装中断后可重复执行安装命令；已安装文件会检查一致性后跳过，内容冲突时会给出文件路径。
 
 网络无法连接 Hugging Face 时，可显式指定兼容镜像，校验标准不变：
 
@@ -44,11 +49,17 @@ python scripts/audit_inputs.py --output artifacts/input_audit.json
 
 ## 训练
 
+先预览五个阶段的命令，再启动训练：
+
+```bash
+DRY_RUN=1 RUN_ID=unav_to_llp_s6 PYTHON_BIN=python bash scripts/run_full_pipeline.sh
+```
+
 ```bash
 RUN_ID=unav_to_llp_s6 PYTHON_BIN=python bash scripts/run_full_pipeline.sh
 ```
 
-默认流程：UnAV 教师 80 epoch → LLP 验证集逐类阈值校准 → 全部 LLP 视频伪标签 → 两轮 U-HNM + IPR 主训练 → 最终测试。教师种子 1000，主训练种子 6；可通过 `SEED=17` 等调整主训练种子。
+脚本首先检查全部训练输入，随后运行以下流程：UnAV 教师 80 epoch → LLP 验证集逐类阈值校准 → 全部 LLP 视频伪标签 → 两轮 U-HNM + IPR 主训练 → 最终测试。教师种子 1000，主训练种子 6；可通过 `SEED=17` 等调整主训练种子。
 
 教师阶段默认最多 24 小时，后续每阶段最多 4 小时；可以显式设置 `TEACHER_HOURS`、`STAGE_HOURS`。超时会终止子进程组，失败记录保留。每阶段有独立 `artifacts/<run-id>/run.json` 和 `launcher.log`。请为每次运行设置新的运行 ID；同名运行会报错。
 
